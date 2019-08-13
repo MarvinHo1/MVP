@@ -35,7 +35,7 @@ class Form extends React.Component {
 
   postNotes() {
     const journalNotes = this.state;
-    axios.post('/journalInformation', { journalNotes })
+    axios.put('/journalInformation', { journalNotes })
     // eslint-disable-next-line func-names
       .then((response) => {
         console.log(response);

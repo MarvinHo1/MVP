@@ -14,6 +14,7 @@ class Notes extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getNotes = this.getNotes.bind(this);
     this.renderView = this.renderView.bind(this);
+    this.deleteNote = this.deleteNote.bind(this);
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -43,19 +44,36 @@ class Notes extends React.Component {
     this.setState({ countryTraveled: event.target.value });
   }
 
+
+  // eslint-disable-next-line class-methods-use-this
+  deleteNote(event, noteID) {
+    event.preventDefault();
+    axios.delete('/deleteNote', {
+      params: { _id: `${noteID}` },
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    this.getNotes();
+  }
+
+
   renderView() {
     if (this.state.notes === 'empty') {
       return 'Select A Country';
     }
     // eslint-disable-next-line no-underscore-dangle
-    const note = this.state.notes.data.map((notes) => <li key={notes._id}>{ notes.journalNotes }</li>);
+    const note = this.state.notes.data.map((notes) => <li onClick={() => this.deleteNote(event, notes._id)} key={notes._id} > { notes.journalNotes }</li>);
     return note;
   }
 
   render() {
     return (
       <div className={style.split}>
-        <form onSubmit={this.handleSubmit}>
+        <form className={style.noteForm} onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.countryTraveled} onChange={this.handleChange} placeholder="Country Visted" />
           <button type="submit" value="Submit">Search</button>
         </form>

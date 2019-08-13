@@ -2,6 +2,7 @@ const request = require('request');
 const travel = require('../models/travel.js');
 const db = require('../index.js');
 const flickrPhotos = require('../apiKey/api.js');
+const ObjectId = require('mongodb').ObjectID;
 
 const findJournalNoteAndUpdate = (req, res) => {
   travel.update({
@@ -48,8 +49,23 @@ const travelNotes = (req, res) => {
   });
 };
 
+const deleteNotes = (req, res) => {
+  // eslint-disable-next-line no-underscore-dangle
+  travel.deleteOne({ _id: ObjectId(req.query._id) }).exec((err) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(404);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+};
+
+// find({_id: ObjectId("5d52e58e28bb018cdce983c4")})
+
 module.exports = {
   findJournalNoteAndUpdate,
   travelPhotos,
   travelNotes,
+  deleteNotes,
 };

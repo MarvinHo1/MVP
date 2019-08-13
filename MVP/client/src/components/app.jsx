@@ -20,7 +20,7 @@ class App extends React.Component {
   }
 
   photo() {
-    axios.get('/journalNotesAndPhotos')
+    axios.get('./photos')
       .then((photos) => {
         this.setState({ pictures: photos.data });
       })

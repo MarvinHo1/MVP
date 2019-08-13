@@ -15,17 +15,22 @@ app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.get('/journalNotesAndPhotos', (req, res) => {
+app.get('/Photos', (req, res) => {
   controller.travelPhotos(req, res);
 });
 
 app.get('/travelNotes', (req, res) => {
-  console.log(req.query)
   controller.travelNotes(req, res);
 });
 
-app.post('/journalInformation', (req, res) => {
+app.put('/journalInformation', (req, res) => {
   controller.findJournalNoteAndUpdate(req, res);
+});
+
+app.delete('/deleteNote', (req, res) => {
+  console.log(req.query._id);
+  controller.deleteNotes(req, res);
+
 });
 
 app.listen(PORT, () => {
