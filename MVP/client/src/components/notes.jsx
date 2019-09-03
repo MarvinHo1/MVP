@@ -1,6 +1,6 @@
 import React from 'React'
-import style from '../style.css';
 import axios from 'axios';
+import style from '../style.css';
 
 class Notes extends React.Component {
   constructor(props) {

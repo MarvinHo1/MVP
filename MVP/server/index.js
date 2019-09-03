@@ -6,11 +6,11 @@ const morgan = require('morgan');
 const controller = require('../database/controllers/travel.js');
 
 const app = express();
-const PORT = 8888;
+const PORTNUM = 8888;
 
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true }));
 app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/../client/dist'));
@@ -28,11 +28,9 @@ app.put('/journalInformation', (req, res) => {
 });
 
 app.delete('/deleteNote', (req, res) => {
-  console.log(req.query._id);
   controller.deleteNotes(req, res);
-
 });
 
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
+app.listen(process.env.PORT || PORTNUM, () => {
+  console.log(`listening on port ${PORTNUM}`);
 });

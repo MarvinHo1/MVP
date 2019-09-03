@@ -1,8 +1,8 @@
 const request = require('request');
+const ObjectId = require('mongodb').ObjectID;
 const travel = require('../models/travel.js');
 const db = require('../index.js');
 const flickrPhotos = require('../apiKey/api.js');
-const ObjectId = require('mongodb').ObjectID;
 
 const findJournalNoteAndUpdate = (req, res) => {
   travel.update({
@@ -60,8 +60,6 @@ const deleteNotes = (req, res) => {
     }
   });
 };
-
-// find({_id: ObjectId("5d52e58e28bb018cdce983c4")})
 
 module.exports = {
   findJournalNoteAndUpdate,

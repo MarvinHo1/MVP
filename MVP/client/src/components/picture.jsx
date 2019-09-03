@@ -6,7 +6,7 @@ import style from '../style.css';
 const Picture = (props) => {
   return (
     <div className={style.ContainerForPics}>
-      {props.pictures.map( pictureID => <img className={style.images} key={pictureID.id} src={`https://farm${pictureID.farm}.staticflickr.com/${pictureID.server}/${pictureID.id}_${pictureID.secret}.jpg`} ></img>)}
+      {props.pictures.map( photo => <img className={style.images} key={photo.id} src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} ></img>)}
     </div>
   );
 };
