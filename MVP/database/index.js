@@ -9,6 +9,6 @@ db.once('open', () => {
 });
 
 
-mongoose.connect('mongodb://heroku_17g8nrzz:Test!123@ds217438.mlab.com:17438/heroku_17g8nrzz', { useNewUrlParser: true });
+mongoose.connect('mongodb://heroku_17g8nrzz:o0admc79undoo7cls9ui2gotpd@ds217438.mlab.com:17438/heroku_17g8nrzz', { useNewUrlParser: true });
 
 module.exports = db;
