@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// const secret = require('./secret.js');
+const secret = require('./secret.js');
 
 const db = mongoose.connection;
 
@@ -9,8 +9,8 @@ db.once('open', () => {
   // we're connected!
 });
 
-// console.log(secret)
+// const MONGODB_URI = mongolab-animated-60210
 
-mongoose.connect(`mongodb://heroku_h1cvmhbb:Hello!123@ds217438.mlab.com:17438/heroku_h1cvmhbb`, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
 module.exports = db;
