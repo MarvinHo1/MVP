@@ -11,6 +11,6 @@ db.once('open', () => {
 
 // const MONGODB_URI = mongolab-animated-60210
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
 
 module.exports = db;
