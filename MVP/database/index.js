@@ -9,6 +9,8 @@ db.once('open', () => {
   // we're connected!
 });
 
+console.log(secret)
+
 mongoose.connect(`mongodb://heroku_h1cvmhbb:${secret}@ds217438.mlab.com:17438/heroku_h1cvmhbb`, { useNewUrlParser: true });
 
 module.exports = db;
