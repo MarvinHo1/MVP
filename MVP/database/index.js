@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const secret = require('./secret.js');
+// const secret = require('./secret.js');
 
 const db = mongoose.connection;
 
